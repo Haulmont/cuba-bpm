@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.workshop.web.order.OrderBrowse"
+        focusComponent="ordersTable"
+        lookupComponent="ordersTable"
+        messagesPack="com.company.workshop.web.order">
+    <dsContext>
+        <collectionDatasource id="ordersDs"
+                              class="com.company.workshop.entity.Order"
+                              view="order-view">
+            <query>
+                <![CDATA[select e from workshop$Order e]]>
+            </query>
+        </collectionDatasource>
+        <valueCollectionDatasource id="clientsDs">
+            <query>
+                <![CDATA[select o.client.name, sum(o.amount) from workshop$Order o group by o.client]]>
+            </query>
+            <properties>
+                <property datatype="string"
+                          name="client"/>
+                <property datatype="decimal"
+                          name="sum"/>
+            </properties>
+        </valueCollectionDatasource>
+    </dsContext>
+    <layout expand="ordersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="ordersTable"
+                datasource="ordersDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="ordersTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="excel"/>
+            </actions>
+            <columns>
+                <column id="client"/>
+                <column id="description"/>
+                <column id="mechanic"/>
+                <column id="status"/>
+                <column id="hoursSpent"/>
+                <column id="amount"/>
+                <column id="number"/>
+            </columns>
+            <rows datasource="ordersDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="ordersTable.create"/>
+                <button id="editBtn"
+                        action="ordersTable.edit"/>
+                <button id="removeBtn"
+                        action="ordersTable.remove"/>
+                <button id="excelBtn"
+                        action="ordersTable.excel"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

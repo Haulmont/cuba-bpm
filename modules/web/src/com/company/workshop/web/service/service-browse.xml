@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.workshop.web.service.ServiceBrowse"
+        focusComponent="servicesTable"
+        lookupComponent="servicesTable"
+        messagesPack="com.company.workshop.web.service">
+    <dsContext>
+        <groupDatasource id="servicesDs"
+                         class="com.company.workshop.entity.Service"
+                         view="_local">
+            <query>
+                <![CDATA[select e from workshop$Service e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="servicesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="servicesTable"
+                datasource="servicesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="servicesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="title"/>
+                <column id="description"/>
+                <column id="price"/>
+            </columns>
+            <rows datasource="servicesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="servicesTable.create"/>
+                <button id="editBtn"
+                        action="servicesTable.edit"/>
+                <button id="removeBtn"
+                        action="servicesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

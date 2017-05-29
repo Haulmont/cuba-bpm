@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.workshop.web.service.ServiceEdit"
+        datasource="serviceDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.workshop.web.service">
+    <dsContext>
+        <datasource id="serviceDs"
+                    class="com.company.workshop.entity.Service"
+                    view="service-view">
+            <collectionDatasource id="specialOffersDs"
+                                  property="specialOffers"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="serviceDs">
+            <column width="250px">
+                <field id="title"/>
+                <field id="description"
+                       rows="5"/>
+                <field id="price"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="specialOffersBox"
+                  caption="msg://com.company.workshop.entity/Service.specialOffers">
+            <table id="specialOffersTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="create"/>
+                    <action id="edit"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="fromDate"/>
+                    <column id="toDate"/>
+                    <column id="discount"/>
+                </columns>
+                <rows datasource="specialOffersDs"/>
+                <buttonsPanel>
+                    <button action="specialOffersTable.create"/>
+                    <button action="specialOffersTable.edit"/>
+                    <button action="specialOffersTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

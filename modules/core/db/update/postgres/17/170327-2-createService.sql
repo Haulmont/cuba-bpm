@@ -1,0 +1,1 @@
+create unique index IDX_WORKSHOP_SERVICE_UK_TITLE on WORKSHOP_SERVICE (TITLE) where DELETE_TS is null ;

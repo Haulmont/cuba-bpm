@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.workshop.web.order.OrderEdit"
+        datasource="orderDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.workshop.web.order">
+    <dsContext>
+        <datasource id="orderDs"
+                    class="com.company.workshop.entity.Order"
+                    view="order-view">
+            <collectionDatasource id="partsDs"
+                                  property="parts"/>
+            <collectionDatasource id="servicesDs"
+                                  property="services"/>
+        </datasource>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+
+        <hbox spacing="true">
+            <vbox width="AUTO" spacing="true">
+                <fieldGroup id="fieldGroup"
+                            datasource="orderDs">
+                    <column width="200px">
+                        <field id="client"/>
+                        <field id="description"
+                               rows="5"/>
+                        <field id="mechanic"/>
+                        <field id="status"/>
+                        <field id="hoursSpent"/>
+                        <field id="amount"/>
+                    </column>
+                </fieldGroup>
+
+                <button caption="Calculate amount" invoke="refreshAmount"/>
+            </vbox>
+
+            <vbox width="300px" spacing="true">
+                <groupBox id="servicesBox"
+                          caption="msg://com.company.workshop.entity/Order.services">
+                    <table id="servicesTable"
+                           height="200px"
+                           width="100%">
+                        <actions>
+                            <action id="add"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="title"/>
+                            <column id="description"/>
+                            <column id="price"/>
+                        </columns>
+                        <rows datasource="servicesDs"/>
+                        <buttonsPanel>
+                            <button action="servicesTable.add"/>
+                            <button action="servicesTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+                <groupBox id="partsBox"
+                          caption="msg://com.company.workshop.entity/Order.parts">
+                    <table id="partsTable"
+                           height="200px"
+                           width="100%">
+                        <actions>
+                            <action id="add"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="title"/>
+                            <column id="description"/>
+                            <column id="price"/>
+                        </columns>
+                        <rows datasource="partsDs"/>
+                        <buttonsPanel>
+                            <button action="partsTable.add"/>
+                            <button action="partsTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </vbox>
+        </hbox>
+
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

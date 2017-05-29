@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.workshop.web.client.ClientEdit"
+        datasource="clientDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.workshop.web.client">
+    <dsContext>
+        <datasource id="clientDs"
+                    class="com.company.workshop.entity.Client"
+                    view="_local"/>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="clientDs">
+            <column width="200px">
+                <field id="name"/>
+                <field id="phoneNumber"/>
+                <field id="email">
+                    <validator class="com.haulmont.cuba.gui.components.validators.EmailValidator"/>
+                </field>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="extendedEditWindowActions"/>
+    </layout>
+</window>

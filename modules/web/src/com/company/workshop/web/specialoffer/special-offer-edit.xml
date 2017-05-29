@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.workshop.web.specialoffer.SpecialOfferEdit"
+        datasource="specialOfferDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.workshop.web.specialoffer">
+    <dsContext>
+        <datasource id="specialOfferDs"
+                    class="com.company.workshop.entity.SpecialOffer"
+                    view="specialOffer-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="specialOfferDs">
+            <column width="250px">
+                <field id="fromDate"/>
+                <field id="toDate"/>
+                <field id="discount"/>
+                <field id="service"
+                       visible="false"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>
