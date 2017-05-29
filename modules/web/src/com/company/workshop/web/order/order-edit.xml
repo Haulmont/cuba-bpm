@@ -35,9 +35,14 @@
                 </fieldGroup>
                 <button caption="Calculate amount"
                         invoke="refreshAmount"/>
+
+                <button caption="Start processing"
+                        invoke="startProcess"/>
+
                 <groupBox id="procActionsBox"
                           caption="Process"
-                          spacing="true">
+                          spacing="true"
+                          visible="false">
                     <frame id="procActionsFrame"
                            screen="procActionsFrame"/>
                 </groupBox>
