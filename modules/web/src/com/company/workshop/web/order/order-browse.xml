@@ -48,6 +48,7 @@
                 <column id="hoursSpent"/>
                 <column id="amount"/>
                 <column id="number"/>
+                <column id="processState"/>
             </columns>
             <rows datasource="ordersDs"/>
             <rowsCount/>

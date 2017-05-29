@@ -58,6 +58,18 @@ public class Order extends StandardEntity {
     @Column(name = "NUMBER_", nullable = false)
     protected Long number;
 
+    @Column(name = "PROCESS_STATE")
+    protected String processState;
+
+    public void setProcessState(String processState) {
+        this.processState = processState;
+    }
+
+    public String getProcessState() {
+        return processState;
+    }
+
+
     public void setNumber(Long number) {
         this.number = number;
     }

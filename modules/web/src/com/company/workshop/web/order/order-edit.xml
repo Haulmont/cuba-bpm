@@ -17,9 +17,9 @@
     </dsContext>
     <layout expand="windowActions"
             spacing="true">
-
         <hbox spacing="true">
-            <vbox width="AUTO" spacing="true">
+            <vbox spacing="true"
+                  width="AUTO">
                 <fieldGroup id="fieldGroup"
                             datasource="orderDs">
                     <column width="200px">
@@ -30,13 +30,20 @@
                         <field id="status"/>
                         <field id="hoursSpent"/>
                         <field id="amount"/>
+                        <field property="processState"/>
                     </column>
                 </fieldGroup>
-
-                <button caption="Calculate amount" invoke="refreshAmount"/>
+                <button caption="Calculate amount"
+                        invoke="refreshAmount"/>
+                <groupBox id="procActionsBox"
+                          caption="Process"
+                          spacing="true">
+                    <frame id="procActionsFrame"
+                           screen="procActionsFrame"/>
+                </groupBox>
             </vbox>
-
-            <vbox width="300px" spacing="true">
+            <vbox spacing="true"
+                  width="300px">
                 <groupBox id="servicesBox"
                           caption="msg://com.company.workshop.entity/Order.services">
                     <table id="servicesTable"
@@ -81,7 +88,6 @@
                 </groupBox>
             </vbox>
         </hbox>
-
         <frame id="windowActions"
                screen="editWindowActions"/>
     </layout>

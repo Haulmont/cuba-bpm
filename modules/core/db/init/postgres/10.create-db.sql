@@ -69,6 +69,7 @@ create table WORKSHOP_ORDER (
     AMOUNT decimal(19, 2),
     STATUS integer not null,
     NUMBER_ bigint not null,
+    PROCESS_STATE varchar(255),
     --
     primary key (ID)
 )^
