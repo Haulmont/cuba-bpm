@@ -12,11 +12,8 @@
           systemProperties="true">
         <property name="client"
                   view="_minimal"/>
-        <property name="mechanic">
-            <property name="user"
-                      view="_minimal"/>
-            <property name="hourlyRate"/>
-        </property>
+        <property name="mechanic"
+                  view="mechanic-view"/>
         <property name="parts">
             <property name="title"/>
             <property name="description"/>
